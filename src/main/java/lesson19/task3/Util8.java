@@ -32,8 +32,8 @@ public class Util8 {
 
     public static List<Integer> getSquares(List<Integer> numbers) {
         return numbers.stream()
-                .map(i -> i * i)
                 .distinct()
+                .map(i -> i * i)
                 .collect(Collectors.toList());
     }
 

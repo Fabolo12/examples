@@ -24,7 +24,7 @@ public class Util {
     public static List<Product> getProductByCategoryAndApplyDiscount(List<Product> productList, String category, int discount) {
         return productList.stream()
                 .filter(p -> p.getCategory().equalsIgnoreCase(category))
-                .map(p -> p.withPrice(p.getPrice() * (1 - discount / 100.0)))
+                .peek(p -> p.withPrice(p.getPrice() * (1 - discount / 100.0)))
                 .collect(Collectors.toList());
     }
 
