@@ -11,6 +11,6 @@ public class SimpleController {
 
     @GetMapping("/")
     public String homePage() {
-        return appName;
+        return appName + "<br><a href='http://localhost:8081/logout'>http://localhost:8081/logout</a>";
     }
 }

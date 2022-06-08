@@ -14,13 +14,13 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 //        save();
-        get();
+//        get();
 //        getHQL();
 //        getSQL();
 //        getCriteria();
 //        saveOneToOne();
 //        saveOneToMany();
-//        saveManyToMany();
+        saveManyToMany();
     }
 
     private static void save() throws InterruptedException {
