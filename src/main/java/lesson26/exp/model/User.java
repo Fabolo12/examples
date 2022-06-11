@@ -1,4 +1,4 @@
-package lesson35.exp.model;
+package lesson26.exp.model;
 
 import lombok.Getter;
 import lombok.Setter;

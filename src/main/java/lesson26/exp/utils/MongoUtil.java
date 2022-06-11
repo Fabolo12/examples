@@ -1,4 +1,4 @@
-package lesson35.exp.utils;
+package lesson26.exp.utils;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;

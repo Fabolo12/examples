@@ -1,4 +1,4 @@
-package lesson35.simple;
+package lesson26.simple;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
@@ -7,7 +7,7 @@ import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import lesson35.simple.model.User;
+import lesson26.simple.model.User;
 import org.bson.Document;
 
 import java.util.Arrays;

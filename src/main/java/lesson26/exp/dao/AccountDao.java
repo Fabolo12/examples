@@ -1,8 +1,8 @@
-package lesson35.exp.dao;
+package lesson26.exp.dao;
 
 import com.mongodb.client.MongoDatabase;
 
-import lesson35.exp.model.Account;
+import lesson26.exp.model.Account;
 import org.bson.Document;
 
 import java.util.List;

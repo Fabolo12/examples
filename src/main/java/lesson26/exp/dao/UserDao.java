@@ -1,7 +1,7 @@
-package lesson35.exp.dao;
+package lesson26.exp.dao;
 
 import com.mongodb.client.MongoDatabase;
-import lesson35.exp.model.User;
+import lesson26.exp.model.User;
 import org.bson.Document;
 
 import java.time.LocalDate;

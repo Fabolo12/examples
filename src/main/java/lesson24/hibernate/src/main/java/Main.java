@@ -1,5 +1,6 @@
 import config.HibernateFactoryUtil;
 import model.*;
+import org.flywaydb.core.Flyway;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.transform.Transformers;
@@ -13,14 +14,21 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-//        save();
+        save();
+        Flyway flyway = Flyway.configure()
+                .dataSource( "jdbc:postgresql://localhost:5432/hibernate" , "postgres" , "root" )
+                .baselineOnMigrate(true)
+                .locations("db/migration")
+                .load();
+        flyway.migrate();
+
 //        get();
 //        getHQL();
 //        getSQL();
 //        getCriteria();
 //        saveOneToOne();
 //        saveOneToMany();
-        saveManyToMany();
+//        saveManyToMany();
     }
 
     private static void save() throws InterruptedException {

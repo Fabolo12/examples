@@ -1,6 +1,5 @@
-package lesson35.simple.model;
+package lesson26.simple.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
