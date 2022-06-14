@@ -12,6 +12,7 @@
         <module>src/main/java/lesson24/hibernate</module>
         <module>src/main/java/lesson34/servlets</module>
         <module>src/main/java/lesson39/spring</module>
+        <module>src/main/java/lesson40/thymeleaf</module>
     </modules>
 
     <properties>
