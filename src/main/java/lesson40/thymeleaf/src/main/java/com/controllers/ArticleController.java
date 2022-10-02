@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -45,6 +46,8 @@ public class ArticleController {
     @GetMapping("/form")
     public ModelAndView getArticleForm(ModelAndView modelAndView) {
         Article article = new Article();
+        article.setTitle("Default title");
+//        Article article = getArticle();
         modelAndView.addObject("article", article);
         modelAndView.setViewName("articleView3");
         return modelAndView;
@@ -84,7 +87,8 @@ public class ArticleController {
 
     @GetMapping("/if")
     public ModelAndView getArticlesIf(ModelAndView modelAndView) {
-        final List<Article> articles = Arrays.asList(getArticle(), getArticle(), getArticle());
+//        final List<Article> articles = Arrays.asList(getArticle(), getArticle(), getArticle());
+        final List<Article> articles = new ArrayList<>();
         modelAndView.addObject("articles", articles);
         modelAndView.setViewName("articleView7");
         return modelAndView;
@@ -118,6 +122,14 @@ public class ArticleController {
         return "/articleView";
     }
 
+    @PutMapping
+    public ModelAndView saveArticle2(@ModelAttribute Article article, ModelAndView modelAndView) {
+        System.out.println(article);
+        modelAndView.addObject("article", article);
+        modelAndView.setViewName("articleView");
+        return modelAndView;
+    }
+
     @GetMapping("/valid")
     public ModelAndView getArticleValid(ModelAndView modelAndView) {
         Article article = new Article();
@@ -139,6 +151,7 @@ public class ArticleController {
         return modelAndView;
     }
 
+//    @ModelAttribute(name = "article")
     private Article getArticle() {
         Article article = new Article();
         article.setAuthor(getName());

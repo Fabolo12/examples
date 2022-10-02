@@ -8,6 +8,7 @@ import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Getter
@@ -21,5 +22,6 @@ public class Greeter {
 
     private String greeting;
 
+    @NotBlank(message = "Target is mandatory")
     private String target;
 }

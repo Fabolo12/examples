@@ -56,7 +56,7 @@ public class Main {
         FindIterable<Document> documents = users.find();
         for (Document document : documents) {
             System.out.println(document);
-//            System.out.println(mapperTo(document));
+            System.out.println(mapperTo(document));
         }
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
@@ -126,7 +126,7 @@ public class Main {
                 document.get("firstName", String.class),
                 document.get("lastName", String.class)
         );
-        user.setId(document.get("_id", String.class));
+        user.setId(String.valueOf(document.get("_id", Object.class)));
         return user;
     }
 }

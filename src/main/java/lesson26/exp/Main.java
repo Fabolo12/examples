@@ -11,6 +11,7 @@ public class Main {
     private static final MongoDatabase db = MongoUtil.connect("aLevel");
 
     public static void main(String[] args) {
+        db.drop();
         AccountDao accountDao = new AccountDao(db);
         UserDao userDao = new UserDao(db);
         UserService service = new UserService(accountDao, userDao);

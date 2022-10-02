@@ -36,6 +36,9 @@ public class GreeterController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Greeter create(@RequestBody Greeter greeter) {
+        if (greeter.getGreeting() == null) {
+            greeter.setGreeting("Hello");
+        }
         return greeterRepository.save(greeter);
     }
 

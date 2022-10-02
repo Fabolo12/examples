@@ -8,6 +8,6 @@
 *.rar
 *.iml
 
-.idea
-target
+.idea/
+target/
 *.txt
