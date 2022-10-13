@@ -2,6 +2,7 @@ package com.controllers;
 
 import com.models.Article;
 import com.models.Category;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -148,6 +149,13 @@ public class ArticleController {
         }
         System.out.println(article);
         modelAndView.setViewName("articleView");
+        return modelAndView;
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping("/security")
+    public ModelAndView security(ModelAndView modelAndView) { // test:test
+        modelAndView.setViewName("articleView11");
         return modelAndView;
     }
 
