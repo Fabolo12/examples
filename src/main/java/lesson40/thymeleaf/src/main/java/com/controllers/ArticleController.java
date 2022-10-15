@@ -2,10 +2,17 @@ package com.controllers;
 
 import com.models.Article;
 import com.models.Category;
+import com.models.Person;
+import com.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -19,6 +26,13 @@ import java.util.Random;
 public class ArticleController {
 
     private static final Random RANDOM = new Random();
+
+    private final UserService service;
+
+    @Autowired
+    public ArticleController(UserService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ModelAndView getArticle(ModelAndView modelAndView) {
@@ -141,7 +155,7 @@ public class ArticleController {
 
     @PostMapping("/valid")
     public ModelAndView saveArticle(@ModelAttribute @Valid Article article, BindingResult bindingResult,
-                              ModelAndView modelAndView) {
+                                    ModelAndView modelAndView) {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("article", article);
             modelAndView.setViewName("articleView10");
@@ -152,14 +166,35 @@ public class ArticleController {
         return modelAndView;
     }
 
-    @PreAuthorize("hasAuthority('USER')")
+    @GetMapping("/registration")
+    public ModelAndView registration(ModelAndView modelAndView) {
+        modelAndView.addObject("user", new Person());
+        modelAndView.setViewName("registration");
+        return modelAndView;
+    }
+
+    @PostMapping("/registration")
+    public ModelAndView registration(@ModelAttribute Person user, ModelAndView modelAndView) {
+        service.save(user);
+        modelAndView.setViewName("redirect:/article");
+        return modelAndView;
+    }
+
     @GetMapping("/security")
-    public ModelAndView security(ModelAndView modelAndView) { // test:test
+    public ModelAndView security(ModelAndView modelAndView) {
         modelAndView.setViewName("articleView11");
         return modelAndView;
     }
 
-//    @ModelAttribute(name = "article")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/admin")
+    public ModelAndView admin(ModelAndView modelAndView) {
+        System.out.println("Only for admin user!");
+        modelAndView.setViewName("articleView11");
+        return modelAndView;
+    }
+
+    //    @ModelAttribute(name = "article")
     private Article getArticle() {
         Article article = new Article();
         article.setAuthor(getName());
