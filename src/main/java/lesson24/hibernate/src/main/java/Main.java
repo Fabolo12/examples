@@ -15,12 +15,12 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         save();
-        Flyway flyway = Flyway.configure()
+        /*Flyway flyway = Flyway.configure()
                 .dataSource( "jdbc:postgresql://localhost:5432/hibernate" , "postgres" , "root" )
                 .baselineOnMigrate(true)
                 .locations("db/migration")
                 .load();
-        flyway.migrate();
+        flyway.migrate();*/
 
 //        get();
 //        getHQL();
@@ -28,7 +28,8 @@ public class Main {
 //        getCriteria();
 //        saveOneToOne();
 //        saveOneToMany();
-//        saveManyToMany();
+        saveManyToMany();
+        System.out.println("TEST");
     }
 
     private static void save() throws InterruptedException {
@@ -65,11 +66,13 @@ public class Main {
                 .list()
                 .forEach(System.out::println);
 
+        System.out.println("~~~~~");
         session.createQuery("from Greeter as p where p.target like :name", Greeter.class)
                 .setParameter("name", "Hiberna%")
                 .list()
                 .forEach(System.out::println);
 
+        System.out.println("~~~~~");
         session.createNamedQuery("getGreeterByTarget", Greeter.class)
                 .setParameter("name", "Hibernate")
                 .list()
@@ -84,11 +87,13 @@ public class Main {
                         .addScalar("c", IntegerType.INSTANCE)
                         .uniqueResult());
 
+        System.out.println("~~~~~");
         session.createNativeQuery("select * from Greeter")
                 .addEntity(Greeter.class)
                 .list()
                 .forEach(System.out::println);
 
+        System.out.println("~~~~~");
         session.createSQLQuery("select target as \"name\" from Greeter")
                 .setResultTransformer(Transformers.aliasToBean(NameDTO.class))
                 .list()

@@ -30,7 +30,7 @@ public class Greeter {
     @Column(columnDefinition = "TEXT")
     private String greeting;
 
-    @Type(type = "TEXT")
+//    @Type(type = "TEXT")
     private String target;
 
     @OneToOne(cascade = CascadeType.PERSIST)

@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 public class HibernateFactoryUtil {
     private static SessionFactory sessionFactory;
-    private static EntityManager entityManager;
+    private static EntityManagerFactory entityManagerFactory;
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -31,11 +31,12 @@ public class HibernateFactoryUtil {
     }
 
     public static EntityManager getEntityManager() {
-        if (entityManager == null) {
-            EntityManagerFactory entityManagerFactory =
+        if (entityManagerFactory == null) {
+            entityManagerFactory =
                     Persistence.createEntityManagerFactory("persistence");
-            entityManager = entityManagerFactory.createEntityManager();
         }
-        return entityManager;
+
+        return entityManagerFactory.createEntityManager();
+
     }
 }

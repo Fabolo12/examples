@@ -3,8 +3,9 @@ package com.controllers;
 import com.models.Article;
 import com.models.Category;
 import com.models.Person;
-import com.service.UserService;
+import com.service.UserResource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,10 +28,10 @@ public class ArticleController {
 
     private static final Random RANDOM = new Random();
 
-    private final UserService service;
+    private final UserResource service;
 
     @Autowired
-    public ArticleController(UserService service) {
+    public ArticleController(UserResource service) {
         this.service = service;
     }
 
