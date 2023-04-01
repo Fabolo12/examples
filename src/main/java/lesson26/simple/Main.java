@@ -1,5 +1,6 @@
 package lesson26.simple;
 
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
@@ -9,6 +10,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import lesson26.simple.model.User;
 import org.bson.Document;
+
 
 import java.util.Arrays;
 import java.util.List;

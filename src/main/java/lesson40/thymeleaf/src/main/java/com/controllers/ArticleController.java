@@ -5,7 +5,6 @@ import com.models.Category;
 import com.models.Person;
 import com.service.UserResource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -103,8 +102,12 @@ public class ArticleController {
 
     @GetMapping("/if")
     public ModelAndView getArticlesIf(ModelAndView modelAndView) {
-//        final List<Article> articles = Arrays.asList(getArticle(), getArticle(), getArticle());
-        final List<Article> articles = new ArrayList<>();
+        final List<Article> articles;
+        if (RANDOM.nextBoolean()) {
+            articles = Arrays.asList(getArticle(), getArticle(), getArticle());
+        } else {
+            articles = new ArrayList<>();
+        }
         modelAndView.addObject("articles", articles);
         modelAndView.setViewName("articleView7");
         return modelAndView;
@@ -195,7 +198,7 @@ public class ArticleController {
         return modelAndView;
     }
 
-    //    @ModelAttribute(name = "article")
+//        @ModelAttribute(name = "article")
     private Article getArticle() {
         Article article = new Article();
         article.setAuthor(getName());

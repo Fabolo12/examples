@@ -11,7 +11,7 @@ public class Actor {
             if (i % 2 == 0) {
                 LOGGER.info("Error " + i);
             } else {
-                LOGGER.debug("Error " + i);
+                LOGGER.debug("Error {}", i);
             }
         }
         LOGGER.error("ERROR!!!!", new RuntimeException());

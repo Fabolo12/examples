@@ -3,6 +3,7 @@ package lesson26.exp.dao;
 import com.mongodb.client.MongoDatabase;
 import lesson26.exp.model.User;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.time.LocalDate;
 import java.util.List;

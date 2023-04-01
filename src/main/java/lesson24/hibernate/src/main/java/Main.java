@@ -1,5 +1,9 @@
 import config.HibernateFactoryUtil;
-import model.*;
+import model.Company;
+import model.Greeter;
+import model.NameDTO;
+import model.Place;
+import model.Responsible;
 import org.flywaydb.core.Flyway;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,13 +18,16 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        save();
-        /*Flyway flyway = Flyway.configure()
-                .dataSource( "jdbc:postgresql://localhost:5432/hibernate" , "postgres" , "root" )
+        Flyway flyway = Flyway.configure()
+                .dataSource("jdbc:postgresql://localhost:5432/hibernate", "postgres", "root")
                 .baselineOnMigrate(true)
                 .locations("db/migration")
                 .load();
-        flyway.migrate();*/
+
+        flyway.clean();
+
+        save();
+        flyway.migrate();
 
 //        get();
 //        getHQL();
@@ -28,7 +35,7 @@ public class Main {
 //        getCriteria();
 //        saveOneToOne();
 //        saveOneToMany();
-        saveManyToMany();
+//        saveManyToMany();
         System.out.println("TEST");
     }
 
