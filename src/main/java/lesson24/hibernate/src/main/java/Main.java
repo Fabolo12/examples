@@ -29,13 +29,13 @@ public class Main {
         save();
         flyway.migrate();
 
-//        get();
+        get();
 //        getHQL();
 //        getSQL();
 //        getCriteria();
-//        saveOneToOne();
-//        saveOneToMany();
-//        saveManyToMany();
+        saveOneToOne();
+        saveOneToMany();
+        saveManyToMany();
         System.out.println("TEST");
     }
 

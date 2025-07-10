@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -57,6 +58,8 @@ public class ArticleController {
     public ModelAndView getArticleExpressions(ModelAndView modelAndView) {
         final Article article = getArticle();
         modelAndView.addObject("article", article);
+        final Article article2 = getArticle();
+        modelAndView.addObject("article2", article2);
         modelAndView.setViewName("articleView2");
         return modelAndView;
     }
@@ -138,9 +141,9 @@ public class ArticleController {
     }
 
     @PostMapping
-    public String saveArticle(@ModelAttribute Article article, ModelAndView modelAndView) {
+    public String saveArticle(@ModelAttribute Article article, Model model) {
         System.out.println(article);
-        modelAndView.addObject("article", article);
+        model.addAttribute("article", article);
         return "/articleView";
     }
 

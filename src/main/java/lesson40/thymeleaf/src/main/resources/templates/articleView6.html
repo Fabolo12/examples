@@ -13,8 +13,7 @@
 <div id="menu" th:insert="menu :: menu_fragment"></div>
 
 <div class="container-fluid m-2">
-    <form th:action="@{/article}" th:object="${article}"
-          th:method="PUT">
+    <form th:action="@{/article}" th:object="${article}" th:method="PUT">
         <div class="card mx-auto mt-2" style="width: fit-content">
             <div class="card-body">
                 <h5 class="card-title" th:text="|Article title: *{title}|">Article title</h5>
